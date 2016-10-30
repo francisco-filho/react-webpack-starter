@@ -1,8 +1,8 @@
 import Store from '../stores/todos'
 
 let todos = [
-  { id: 1, todo: 'nothing', done: false},
-  { id: 2, todo: 'react', done: false}
+  { id: 1, todo: 'nothing', done: 'false'},
+  { id: 2, todo: 'react', done: 'false'}
 ]
 
 let TodoAction = {
@@ -16,10 +16,17 @@ let TodoAction = {
     Store.set(todos)
   },
 
-  done(todoId){
+  remove(todo){
+    console.info('removing: ', todo)
+
+    todos = todos.filter((t) => todo.id !== t.id)
+    Store.set(todos)
+  },
+
+  done(todo){
     todos = todos.map((t)=>{
-      tmp = t; 
-      if (tmp.id === todoId) tmp.done = true
+      let tmp = t; 
+      if (tmp.id === todo.id) tmp.done = 'true'
       return tmp
     })
     Store.set(todos)
