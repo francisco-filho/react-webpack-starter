@@ -7,7 +7,8 @@ const config = {
   },
   output: {
     path: Path.join(__dirname, './build') ,
-    filename: '[name]-bundle.js'
+    filename: '[name]-bundle.js',
+    publicPath: Path.join(__dirname, './build/')
   },
   module: {
     loaders: [{
@@ -23,11 +24,10 @@ const config = {
     modulesDirectories: ['node_modules']
   },
   devServer: {
-    contentBase: process.cwd(),
     port: 3000,
     hot: true, 
     inline: true,
-    publicPath: Path.resolve(process.cwd(), '/public/'),
+    publicPath: Path.resolve(process.cwd(), '/build/'),
     stats: { colors: true }
   }
 }
