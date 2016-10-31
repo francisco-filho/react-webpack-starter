@@ -12,7 +12,6 @@ class App extends Component {
         this.onPressEnter = this.onPressEnter.bind(this)
         this.remove = this.remove.bind(this)
     }
-
     componentDidMount(){
       Store.addListener('changed', payload =>{
         this.setState({
@@ -21,21 +20,17 @@ class App extends Component {
       })
       Actions.getAll()
     }
-
     remove(todo){
       Actions.remove(todo)
     }
-
     done(todo){
       console.log('done ', todo)
       Actions.done(todo)
     }
-
     onPressEnter(ev){
       if (ev.key ==='Enter')
         Actions.add(ev.target.value)
     }
-
     render(){
       return (
         <div>
@@ -57,13 +52,6 @@ class App extends Component {
 class TodoItem extends Component {
   constructor(props){
     super(props)
-  }
-  shouldComponentUpdate(nextProps, nextState){
-    console.log('shouldupdate',nextProps, this.props)
-    return true;
-  }
-  componentWillReceiveProps(newProps){
-    console.info('newProps', newProps)
   }
   render(){
         return <li >{ this.props.todo.todo }
